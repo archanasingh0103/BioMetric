@@ -61,7 +61,7 @@ export class EmployeeWiseDeviceComponent {
      this.startAutoRefreshAt1205AM();
   }
   ngOnDestroy(): void {
-    // ⭐ NEW: prevent memory leak
+    //  NEW: prevent memory leak
     if (this.autoRefreshInterval) {
       clearInterval(this.autoRefreshInterval);
     }
@@ -73,7 +73,7 @@ export class EmployeeWiseDeviceComponent {
       const hours = now.getHours();
       const minutes = now.getMinutes();
 
-      // 👉 12:05 AM trigger
+      //  12:05 AM trigger
       if (hours === 0 && minutes === 5) {
 
         if (this.selectedEmployeeCode) {
@@ -88,8 +88,6 @@ export class EmployeeWiseDeviceComponent {
   getEmployeeDropdown() {
     this.commonService.employeeDropdown().subscribe((res: any) => {
       console.log("Employee dropdown:",res);
-      
-      // this.employeewithDevice = Array.isArray(res) ? res : res.body || [];
       this.employeewithDevice = res?.body || [];
     });
   }
